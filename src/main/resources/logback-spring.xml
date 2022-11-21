@@ -1,0 +1,34 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<configuration>
+	<property name="LOG_PATTERN"
+			  value="%d{yyyy-MM-dd'T'HH:mm:ss.SSS}  ${serverName:-${HOSTNAME}} [%C{15}] [%t] [%p] %m%n"/>
+	<property name="BASE_FOLDER" value="logs/gateway-service"/>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="applicationLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${BASE_FOLDER}/courier-tracking.log</File>
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+			<fileNamePattern>${BASE_FOLDER}/courier-tracking-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>5MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+	</appender>
+
+	<root level="INFO">
+		<!--<appender-ref ref="applicationLog"/>-->
+		<appender-ref ref="STDOUT"/>
+
+	</root>
+</configuration>
