@@ -2,7 +2,7 @@
 <configuration>
 	<property name="LOG_PATTERN"
 			  value="%d{yyyy-MM-dd'T'HH:mm:ss.SSS}  ${serverName:-${HOSTNAME}} [%C{15}] [%t] [%p] %m%n"/>
-	<property name="BASE_FOLDER" value="logs/gateway-service"/>
+	<property name="BASE_FOLDER" value="logs/courier-tracking"/>
 
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
