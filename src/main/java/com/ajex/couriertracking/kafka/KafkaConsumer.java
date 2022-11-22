@@ -25,7 +25,7 @@ public class KafkaConsumer {
 	@Autowired
 	CustomObjectMapper customObjectMapper;
 	
-	@KafkaListener(topics="orders.fact.creations.v1" , groupId="courierOrderGroup", containerFactory = "containerFactory")
+	@KafkaListener(topics="orders.fact.creations.v1" , groupId="courierOrderGroup1")
 	public void createAirwaybill(@RequestBody ConsumerRecord<?, ?>  consumerRecord) {
 		try {
 			log.info("Message received for waybill details: "+consumerRecord);
