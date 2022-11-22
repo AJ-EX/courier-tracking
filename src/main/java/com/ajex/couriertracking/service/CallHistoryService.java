@@ -26,6 +26,7 @@ public class CallHistoryService {
     }
 
     public CallHistoryDto save(CallHistoryDto callHistoryDto) {
+        log.info("Caller info received {}",callHistoryDto);
         CallHistory entity = callHistoryMapper.toEntity(callHistoryDto);
         return callHistoryMapper.toDto(repository.save(entity));
     }

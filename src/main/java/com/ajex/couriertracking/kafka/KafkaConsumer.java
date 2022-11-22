@@ -28,7 +28,7 @@ public class KafkaConsumer {
 	@KafkaListener(topics="orders.fact.creations.v1" , groupId="courierOrderGroup1")
 	public void createAirwaybill(@RequestBody ConsumerRecord<?, ?>  consumerRecord) {
 		try {
-			log.info("Message received for waybill details: "+consumerRecord);
+			log.info("Courier : Message received for waybill details: "+consumerRecord);
 			
 			ObjectMapper mapper=customObjectMapper.getObjectMapper();
 			Airwaybill airwaybill = mapper.convertValue(consumerRecord.value(),Airwaybill.class);
@@ -44,7 +44,7 @@ public class KafkaConsumer {
 			
 		} 
 		catch (Exception e) {
-			log.error("Exception while consuming the kafka input : {}", consumerRecord);
+			log.error("Courier : Exception while consuming the kafka input : {}", consumerRecord);
 			log.error("Exception : {}", e);
 		}	
 	}
