@@ -23,6 +23,9 @@ public class CallHistoryMapper implements EntityMapper<CallHistoryDto, CallHisto
         callHistory.setCourierNumber(dto.getCourierNumber());
         callHistory.setToNumber(dto.getToNumber());
         callHistory.setWaybillno(dto.getWaybillno());
+        callHistory.setVersion(dto.getVersion());
+        callHistory.setLang(dto.getLang());
+        callHistory.setLat(dto.getLat());
 
         return callHistory;
     }
@@ -40,6 +43,9 @@ public class CallHistoryMapper implements EntityMapper<CallHistoryDto, CallHisto
         callHistoryDto.setToNumber(entity.getToNumber());
         callHistoryDto.setWaybillno(entity.getWaybillno());
         callHistoryDto.setId(entity.getId());
+        callHistoryDto.setLang(entity.getLang());
+        callHistoryDto.setLat(entity.getLat());
+        callHistoryDto.setVersion(entity.getVersion());
         return callHistoryDto;
     }
 
@@ -50,8 +56,8 @@ public class CallHistoryMapper implements EntityMapper<CallHistoryDto, CallHisto
 
     @Override
     public List<CallHistoryDto> toDto(List<CallHistory> entityList) {
-        return null;
-    }
+        return entityList.stream().map(entity -> this.toDto(entity)).collect(Collectors.toList());
+     }
 
     @Override
     public Set<CallHistoryDto> toDto(Set<CallHistory> entityList) {

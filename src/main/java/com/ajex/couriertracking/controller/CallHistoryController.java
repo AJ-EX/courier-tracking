@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/api/v1/call-history")
 @RestController
 @Slf4j
@@ -23,9 +25,9 @@ public class CallHistoryController {
     }
 
     @PostMapping
-    public ResponseEntity<CallHistoryDto> save(@RequestBody @Validated CallHistoryDto callHistoryDto) {
-        CallHistoryDto dto = callHistoryService.save(callHistoryDto);
-        return ResponseEntity.ok(dto);
+    public ResponseEntity<List<CallHistoryDto>> save(@RequestBody @Validated List<CallHistoryDto> callHistoryDtos) {
+        List<CallHistoryDto> dtos = callHistoryService.save(callHistoryDtos);
+        return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("/{id}")

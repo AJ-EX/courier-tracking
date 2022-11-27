@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.apache.poi.hpsf.Decimal;
 
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -29,6 +31,9 @@ public class CallHistoryDto  {
     @Size(max = 255)
     private String toNumber;
     private String waybillno;
+    private String version;
+    private BigDecimal lat;
+    private BigDecimal lang;
 
 
 }

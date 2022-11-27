@@ -25,10 +25,11 @@ public class CallHistoryService {
         this.callHistoryMapper = callHistoryMapper;
     }
 
-    public CallHistoryDto save(CallHistoryDto callHistoryDto) {
+    public List<CallHistoryDto> save(List<CallHistoryDto> callHistoryDto) {
         log.info("Caller info received {}",callHistoryDto);
-        CallHistory entity = callHistoryMapper.toEntity(callHistoryDto);
-        return callHistoryMapper.toDto(repository.save(entity));
+        List<CallHistory> callHistoryList = callHistoryMapper.toEntity(callHistoryDto);
+
+        return callHistoryMapper.toDto( repository.saveAll(callHistoryList));
     }
 
     public void deleteById(long id) {
@@ -50,6 +51,7 @@ public class CallHistoryService {
         CallHistoryDto data = findById(id);
         CallHistory entity = callHistoryMapper.toEntity(callHistoryDto);
       //  BeanUtil.copyProperties(data, entity);
-        return save(callHistoryMapper.toDto(entity));
+      //  return save(callHistoryMapper.toDto(entity));
+        return null;
     }
 }

@@ -2,9 +2,11 @@ package com.ajex.couriertracking.dao;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.poi.hpsf.Decimal;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -53,5 +55,15 @@ public class CallHistory implements Serializable {
 	private String toNumber;
 
 	private String waybillno;
+
+
+	@Column(name="version")
+	private String version;
+
+	@Column(name="lat")
+	private BigDecimal lat;
+
+	@Column(name="lang")
+	private BigDecimal lang;
 
 }
